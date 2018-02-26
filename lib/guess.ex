@@ -19,12 +19,12 @@ defmodule Guess do
   def findingNumber({_,_,true,purpose,number}), do: { :isTheNumber, purpose, number }
 
   def purposeNumber({:isSmaller, purpose, number}) do
-    IO.puts "Intentando con: #{purpose>>>1} "
-    guess( purpose>>>1, number)
+    IO.puts "#{purpose} no es. Intentando con: #{purpose-1} "
+    guess( purpose-1, number)
   end
   def purposeNumber({:isBigger, purpose, number}) do
-    IO.puts "Intentando con: #{purpose>>>-1} "
-    guess( purpose>>>-1, number)
+    IO.puts "#{purpose} no es. Intentando con: #{purpose+1} "
+    guess( purpose+1 , number)
   end
 
 end
