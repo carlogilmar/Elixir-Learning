@@ -1,7 +1,9 @@
-defModule Nucleotide do
+defmodule Nucleotide do
 
   # AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC
   # 20 12 17 21
   # A', 'C', 'G', and 'T'
 
 end
+
+
