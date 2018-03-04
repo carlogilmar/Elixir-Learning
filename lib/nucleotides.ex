@@ -9,6 +9,27 @@ defmodule Nucleotide do
 
   end
 
+
+  def start() do
+    get(["A","B","B","A","A","B"], %{"A"=>0,"B"=>0})
+  end
+
+  def get([h|t], c) do
+    increment(h, t, c)
+  end
+
+  def get([], counters), do: IO.inspect counters
+
+  def increment(element, tail, counters) do
+    currentCounter = counters[element] + 1
+    countersUpdated = Map.put(counters, element, currentCounter)
+    IO.inspect countersUpdated
+    get( tail, countersUpdated)
+  end
+
+  def increment(_, [], counters), do: :end_of_list
+
+
 end
 
 
