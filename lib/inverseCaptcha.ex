@@ -2,7 +2,8 @@ defmodule InverseCaptcha do
 
   def start(captcha) do
     String.codepoints(captcha)
-      |> parserToInteger
+    |> parserToInteger
+    |> createSumList
   end
 
   def parserToInteger( [h|t] ) do
@@ -12,26 +13,35 @@ defmodule InverseCaptcha do
 
   def parserToInteger( [] ), do: []
 
-  def getSumList([e], sumList) do
-    sumList
-  end
-  def getSumList( elementList, sumList) do
-    [ element | t ] = elementList
-    [ next | _ ] = t
-    suscribeElement({ element == next, element, t, sumList })
+  def createSumList(numberList) do
+    [h|_]=numberList
+    getSumList(numberList, [], h)
   end
 
-  def suscribeElement({true, element, list, sumList}) do
-    getSumList( list, sumList ++ [element])
+  def getSumList([], sumList, _) do
+    sumList
   end
-  def suscribeElement({false, _, list, sumList}) do
-    IO.puts("can u see me?")
-    IO.inspect( list )
-    getSumList( list, sumList)
+
+  def getSumList([last], sumList, first) do
+    suscribeElement({last==first, last, [], sumList, first})
   end
-  def suscribeElement({_, _, [], sumList}) do
-    IO.puts("Terminamos la lista ==============>")
-    getSumList( [], sumList)
+
+  def getSumList( elementList, sumList, first) do
+    [ element | t ] = elementList
+    [ next | _ ] = t
+    suscribeElement({ element == next, element, t, sumList, first })
+  end
+
+  def suscribeElement({true, element, list, sumList, first}) do
+    getSumList( list, sumList ++ [element], first)
+  end
+
+  def suscribeElement({false, _, list, sumList, first}) do
+    getSumList( list, sumList, first)
+  end
+
+  def suscribeElement({_, _, [], sumList, first}) do
+    getSumList( [], sumList, first)
   end
 
 end
