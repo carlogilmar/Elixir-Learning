@@ -4,6 +4,7 @@ defmodule InverseCaptcha do
     String.codepoints(captcha)
     |> parserToInteger
     |> createSumList
+    |> sumList(0)
   end
 
   def parserToInteger( [h|t] ) do
@@ -43,5 +44,12 @@ defmodule InverseCaptcha do
   def suscribeElement({_, _, [], sumList, first}) do
     getSumList( [], sumList, first)
   end
+
+  def sumList([], sum), do: sum
+  def sumList(elements, sum) do
+    [h|t] = elements
+    sumList( t, sum+h )
+  end
+
 
 end
