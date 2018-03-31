@@ -34,11 +34,30 @@ defmodule Pingpong do
 		end
 	end
 
-	def example() do
+	def example do
 		IO.puts("1.- Init Consumer")
 		consumerReady = spawn(Pingpong, :sayHello, [])
 		IO.inspect consumerReady
 		send consumerReady, {:ok, "hello"}
 	end
 
+	def init do
+		ping = spawn(Pingpong, :pingConsumer, [])	
+		pong = spawn(Pingpong, :pongConsumer, [])	
+		IO.puts "Sending messages!"
+		send ping, {:ping}
+		send pong, {:pong}
+	end
+
+	def pingConsumer do
+		receive do
+			{:ping} -> IO.puts "ping!"
+		end
+	end
+
+	def pongConsumer do
+		receive do
+			{:pong} -> IO.puts "pong!"
+		end
+	end
 end
