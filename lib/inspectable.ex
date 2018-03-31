@@ -16,6 +16,11 @@ defimpl Inspectable, for: Integer do
 	end
 end
 
+defimpl  Inspectable, for: Point do
+	def dump(%Point{x: x, y: y, z: z}) do
+		":: Point Struct ::#{x}, #{y}, #{z}"
+	end
+end
 
 defimpl Inspectable, for: Any do
 	def dump(_) do
