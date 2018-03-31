@@ -27,4 +27,18 @@ defmodule Pingpong do
 		:ok
 	end
 
+	def sayHello do
+		IO.puts "::Say Hello:: Creating a process!"
+		receive do
+			{:ok, "hello"} -> IO.puts "Hola a todos!!"
+		end
+	end
+
+	def example() do
+		IO.puts("1.- Init Consumer")
+		consumerReady = spawn(Pingpong, :sayHello, [])
+		IO.inspect consumerReady
+		send consumerReady, {:ok, "hello"}
+	end
+
 end
