@@ -16,6 +16,9 @@ defimpl Inspectable, for: Integer do
 	end
 end
 
+# We create a new data struct called Point
+# iex> %Point{x: 1, y: 2, z: 3}
+# iex> Inspectable.dump(point)
 defimpl  Inspectable, for: Point do
 	def dump(%Point{x: x, y: y, z: z}) do
 		":: Point Struct ::#{x}, #{y}, #{z}"

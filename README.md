@@ -15,3 +15,5 @@
 - Advanced Elixir and OTP
 	- Word Counter (Enums)
 	- Word Counter with Streams
+	- inspectable (protocols)
+	- Point (data struct)
