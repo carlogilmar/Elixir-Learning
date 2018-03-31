@@ -1,15 +1,25 @@
 defmodule Pingpong do
+
+	# spawn(Example, :add, [2, 3]) 
+	# recibe: Modulo, funcion (atomo), y parámetros de la función
+	def start do
+		ping = spawn(Pingpong, :loop, [{0, :ping}])
+		pong = spawn(Pingpong, :loop, [{0, :pong}])
+		send(ping, {:ball, pong})
+	end
 	
 	def loop({num_iterations, name}) do
 		IO.puts ":: #{num_iterations} :: #{name}"
+		# Consumer
 		receive do
+			# Message     -> Do Something
 			{:ball, from} -> pass_ball(from); loop({num_iterations + 1, name})
 			{:stop} -> stop()
 		end
 	end
 
 	def pass_ball(from) do
-		:timer.slepp(2000)
+		:timer.sleep(2000)
 		send(from, {:ball, from})
 	end
 
