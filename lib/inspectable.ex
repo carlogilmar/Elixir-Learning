@@ -1,4 +1,5 @@
 defprotocol Inspectable do
+	@fallback_to_any true
 	def dump(element)
 end
 
@@ -14,3 +15,11 @@ defimpl Inspectable, for: Integer do
 		"INTEGER: #{integer}"
 	end
 end
+
+
+defimpl Inspectable, for: Any do
+	def dump(_) do
+		".:: Random Element! ::."
+	end
+end
+# Inspectable.dump(0) 
