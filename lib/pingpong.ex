@@ -20,7 +20,7 @@ defmodule Pingpong do
 
 	def pass_ball(from) do
 		:timer.sleep(2000)
-		send(from, {:ball, from})
+		send(from, {:ball, self()})
 	end
 
 	defp stop() do
@@ -41,23 +41,25 @@ defmodule Pingpong do
 		send consumerReady, {:ok, "hello"}
 	end
 
+
+	# My own example 
 	def init do
 		ping = spawn(Pingpong, :pingConsumer, [])	
 		pong = spawn(Pingpong, :pongConsumer, [])	
 		IO.puts "Sending messages!"
-		send ping, {:ping}
-		send pong, {:pong}
+		send ping, {:ping, pong, ping}
 	end
 
 	def pingConsumer do
 		receive do
-			{:ping} -> IO.puts "ping!"
+			{:ping, process, me} -> IO.puts "ping!"; send process,{:pong, process, me} 
 		end
 	end
 
 	def pongConsumer do
 		receive do
-			{:pong} -> IO.puts "pong!"
+			{:pong, me, process} -> IO.puts "pong!"; send process,{:ping, me, process}
 		end
 	end
+
 end
