@@ -1,4 +1,4 @@
-defmodule Words do
+defmodule WordsStreams do
 	
 	def count(lines, mod) do
 		lines 
