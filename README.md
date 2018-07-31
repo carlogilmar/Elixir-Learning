@@ -1,21 +1,23 @@
-# Learning
+### Learning Elixir Mar 2018
 
-**TODO: Add description**
+##### @carlogilmar
 
-## Installation
+- Simple Exercises
+	- Fibonacci
+	- BeerSong
+	- Guess my number
+	- Fizz buzz
+	- Square
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `learning` to your list of dependencies in `mix.exs`:
+- Advent of code
+	- Inverse Captcha
 
-```elixir
-def deps do
-  [
-    {:learning, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/learning](https://hexdocs.pm/learning).
-
+- Advanced Elixir and OTP
+	- Word Counter (Enums)
+	- Word Counter with Streams
+	- inspectable (protocols)
+	- Point (data struct)
+	- PingPong (process)
+	- ETS Example Scripts
+	- GenServer 
+	- Deck Example (GenServer)
