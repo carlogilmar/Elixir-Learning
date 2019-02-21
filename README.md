@@ -19,5 +19,30 @@
 	- Point (data struct)
 	- PingPong (process)
 	- ETS Example Scripts
-	- GenServer 
+	- GenServer
 	- Deck Example (GenServer)
+
+
+```
+
+#### Elixir Quote AST
+
+quote do: (5*2)-1+7
+
+{
+  :+,
+  [context: Elixir, import: Kernel],
+    [
+      {
+        :-,
+        [context: Elixir, import: Kernel],
+        [
+          {:*, [context: Elixir, import: Kernel], [5, 2]},
+          1
+        ]
+      },
+      7
+    ]
+ }
+
+```
