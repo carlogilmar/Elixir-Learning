@@ -18,9 +18,11 @@ defmodule ControlFlow do
   ###############
 
   defmacro if_faker( expression, do: code_block ) do
-    case expression do
-      x when x in [false, nil] -> :fail
-      _ -> code_block
+    quote do
+      case expression do
+        x when x in [false, nil] -> :fail
+        _ -> code_block
+      end
     end
   end
 
