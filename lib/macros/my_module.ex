@@ -1,7 +1,7 @@
 defmodule MyModule do
 
   require Mod
-  Mod.definfo
+  #Mod.definfo
   Mod.defcalendar
 
   def fun_fake() do
