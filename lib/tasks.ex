@@ -47,10 +47,6 @@ defmodule MyTasker do
     IO.puts "Duración: #{duration}"
   end
 
-  def apply_func(fun, arg) do
-    fn ->
-      fun.(arg)
-    end
-  end
+  def apply_func(fun, arg), do: fn -> fun.(arg) end
 
 end
