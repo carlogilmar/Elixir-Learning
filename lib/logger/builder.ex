@@ -1,4 +1,4 @@
-defmodule Builder do
+defmodule App.Builder do
 
   def build(model) do
     IO.puts "==="

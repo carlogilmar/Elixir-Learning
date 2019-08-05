@@ -10,7 +10,7 @@ defmodule Foo do
   end
 
   def process(model) do
-    track(model)
+    track(model, "UPDATED")
     {:process, model}
   end
 end
