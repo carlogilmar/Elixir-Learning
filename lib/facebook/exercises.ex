@@ -21,7 +21,8 @@ defmodule FbExercises do
   end
 
   def fill_empty_lists(lists_with_last_element, numbers_available) do
-    put_first_element_in_list(lists_with_last_element, numbers_available)
+    {lists, numbers_available} =
+      put_first_element_in_list(lists_with_last_element, numbers_available)
   end
 
   def put_first_element_in_list(lists_with_last_element, numbers_available) do
