@@ -17,7 +17,7 @@ defmodule ExercisesTest do
         [11,16,15,6],
         [10, 9, 8, 7]
       ]
-    matrix = FbExercises.generate_matrix(number)
+    matrix = FacebookBuilder.generate_matrix(number)
     assert matrix == expected_matrix
   end
 end
