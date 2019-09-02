@@ -1,10 +1,12 @@
 defmodule FbExercises do
-  def generate_matrix(pivot) do
+
+  def generate_starter_model(pivot) do
     pivot
       |> generate_model()
-    ###|> fill_first_list()
-      #|> fill_last_list()
-      #|> fill_body()
+      |> fill_first_list()
+      |> fill_last_list()
+      |> put_last_vertx()
+      |> put_first_row()
   end
 
   def generate_model(pivot) do
