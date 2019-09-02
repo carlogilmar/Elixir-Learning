@@ -34,4 +34,31 @@ defmodule FbExercises do
     {model, numbers_available, pivot}
   end
 
+  def put_last_vertx({model, numbers_available, pivot}) do
+    [first_list|tail] = model
+    [last_line|tail] = Enum.reverse(tail)
+    body_lists =
+      for {list, number} <- Enum.zip(tail, numbers_available) do
+        [list ++ number]
+      end
+    model = [first_list] ++ body_lists ++ [last_line]
+    numbers_used = Enum.take(numbers_available, length(body_lists))
+    numbers_available = numbers_available -- numbers_used
+    {model, numbers_available, pivot}
+  end
+
+  def put_first_row({model, numbers_available, pivot}) do
+    [first_list|tail] = model
+    [last_line|tail] = Enum.reverse(tail)
+    body_lists =
+      for {list, number} <- Enum.zip(tail, numbers_available) do
+        [number] ++ list
+      end
+    body_lists = Enum.reverse(body_lists)
+    numbers_used = Enum.take(numbers_available, length(body_lists))
+    numbers_available = numbers_available -- numbers_used
+    model = [first_list] ++ body_lists ++ [last_line]
+    {model, numbers_available, pivot}
+  end
+
 end

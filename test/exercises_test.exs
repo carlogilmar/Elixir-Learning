@@ -23,6 +23,21 @@ defmodule ExercisesTest do
     assert model == {[[1,2,3,4],[],[],[10,9,8,7]], [5,6,11,12,13,14,15,16], 4}
   end
 
+  test "Fill last vertx" do
+    model = FbExercises.put_last_vertx({[[1,2,3,4],[],[],[10,9,8,7]], [5,6,11,12,13,14,15,16], 4})
+    assert model == {[[1,2,3,4],[5],[6],[10,9,8,7]], [11,12,13,14,15,16], 4}
+  end
+
+  test "Fill first row" do
+    model = FbExercises.put_first_row({[[1,2,3,4],[5],[6],[10,9,8,7]], [11,12,13,14,15,16], 4})
+    assert model == {[[1,2,3,4],[12,5],[11,6],[10,9,8,7]], [13,14,15,16], 4}
+  end
+
+  #test "fill body" do
+  #  model = FbExercises.fill_body({[[1,2,3,4],[],[],[10,9,8,7]], [5,6,11,12,13,14,15,16], 4})
+  #  assert model == [[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]]
+  #end
+
   #test "get a matrix with 4 " do
   #  number = 4
   #  expected_matrix =
