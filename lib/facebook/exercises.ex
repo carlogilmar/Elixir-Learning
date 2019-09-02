@@ -13,9 +13,25 @@ defmodule FbExercises do
 
     {tail, numbers_available} = fill_last_element_in_lists(empty_lists, numbers_available)
 
+    [_last|lists_with_last_element] = Enum.reverse(tail)
+
     {last_list, numbers_available} = fill_last_list({tail, numbers_available}, pivot)
 
-    [first_list, [8,9,4], last_list]
+    fill_empty_lists(lists_with_last_element, numbers_available)
+  end
+
+  def fill_empty_lists(lists_with_last_element, numbers_available) do
+    put_first_element_in_list(lists_with_last_element, numbers_available)
+  end
+
+  def put_first_element_in_list(lists_with_last_element, numbers_available) do
+    lists_with_first_and_last =
+      for {list, num} <- Enum.zip(lists_with_last_element, numbers_available) do
+        [num] ++ list
+      end
+    numbers_used = Enum.take(numbers_available, length(lists_with_last_element))
+    numbers_available = numbers_available -- numbers_used
+    {lists_with_first_and_last, numbers_available}
   end
 
   def get_first_list(numbers_for_fill, pivot) do
