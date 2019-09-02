@@ -7,17 +7,32 @@ defmodule ExercisesTest do
   #  matrix = FbExercises.generate_matrix(number)
   #  assert matrix == expected_matrix
   #end
-
-  test "get a matrix with 4 " do
-    number = 4
-    expected_matrix =
-      [
-        [1,2,3,4],
-        [12,13,14,5],
-        [11,16,15,6],
-        [10, 9, 8, 7]
-      ]
-    matrix = FacebookBuilder.generate_matrix(number)
-    assert matrix == expected_matrix
+  #
+  test "generate model" do
+    model = FbExercises.generate_model(4)
+    assert model == {[[],[],[],[]], [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16], 4}
   end
+
+  test  "Add first line" do
+    model = FbExercises.fill_first_list({[[],[],[],[]], [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16], 4})
+    assert model == {[[1,2,3,4],[],[],[]], [5,6,7,8,9,10,11,12,13,14,15,16], 4}
+  end
+
+  test "Add last_line" do
+    model = FbExercises.fill_last_list({[[1,2,3,4],[],[],[]], [5,6,7,8,9,10,11,12,13,14,15,16], 4})
+    assert model == {[[1,2,3,4],[],[],[10,9,8,7]], [5,6,11,12,13,14,15,16], 4}
+  end
+
+  #test "get a matrix with 4 " do
+  #  number = 4
+  #  expected_matrix =
+  #    [
+  #      [1,2,3,4],
+  #      [12,13,14,5],
+  #      [11,16,15,6],
+  #      [10, 9, 8, 7]
+  #    ]
+  #  matrix = FacebookBuilder.generate_matrix(number)
+  #  assert matrix == expected_matrix
+  #end
 end
