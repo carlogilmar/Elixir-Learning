@@ -2,12 +2,14 @@ defmodule Population do
 
   def get_population do
     [
-      {"person", 2010, 2018},
       {"person", 2000, 2010},
-      {"person", 2001, 2008},
-      {"person", 2002, 2004},
-      {"person", 2000, 2018},
-      {"person", 2010, 2018}
+      {"person", 1975, 2005},
+      {"person", 1975, 2003},
+      {"person", 1803, 1809},
+      {"person", 1750, 1869},
+      {"person", 1840, 1935},
+      {"person", 1803, 1921},
+      {"person", 1894, 1921}
     ]
   end
 
